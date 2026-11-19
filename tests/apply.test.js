@@ -130,6 +130,19 @@ test('post-execute does not add additionalContexts for everyday args', async () 
   );
 });
 
+test('post-execute does not duplicate an existing guiding thought context', async () => {
+  const { postExecute } = setupAppliedAgent();
+  const existing = {
+    source: { kind: 'guiding-thought' },
+  };
+  const decision = await postExecute(
+    { arguments: { content: '根因已经确定' } },
+    { content: [] },
+    async () => ({ kind: 'accept', additionalContexts: [existing] }),
+  );
+  assert.deepEqual(decision.additionalContexts, [existing]);
+});
+
 test('locale files have title and description and no detail', () => {
   for (const name of ['en.json', 'zh.json']) {
     const locale = JSON.parse(

@@ -14,6 +14,10 @@ const PRINCIPLE_LINES = [
   '认识对不对看实践结果。',
   '捉住主要矛盾。',
   '不同质的矛盾用不同质的方法。',
+  '把事实、目标、约束和未知分开。',
+  '每个判断都写成可被事实推翻的假设。',
+  '优先查最可能改变结果的关键环节。',
+  '为判断提出验证动作、预期结果和停止条件。',
 ];
 
 test('createThoughtMessage returns a user notice echoing id', () => {

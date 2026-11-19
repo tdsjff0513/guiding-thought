@@ -91,3 +91,49 @@ test('additionalContextsForToolResult injects when result text is major-directio
   );
   assert.deepEqual(result, [createThoughtMessage('t2')]);
 });
+
+test('additionalContextsForToolResult fails closed for circular arguments', () => {
+  const argumentsValue = {};
+  argumentsValue.self = argumentsValue;
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: argumentsValue },
+      { content: [] },
+      't2',
+    ),
+    [],
+  );
+});
+
+test('additionalContextsForToolResult fails closed for BigInt arguments', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: { count: 1n } },
+      { content: [] },
+      't2',
+    ),
+    [],
+  );
+});
+
+test('serialization failure does not scan result text', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: { count: 1n } },
+      { content: [{ type: 'text', text: '根因是缓存层' }] },
+      't2',
+    ),
+    [],
+  );
+});
+
+test('undefined arguments do not scan result text when explicitly present', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: undefined },
+      { content: [{ type: 'text', text: '根因是缓存层' }] },
+      't2',
+    ),
+    [],
+  );
+});
