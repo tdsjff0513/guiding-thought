@@ -8,10 +8,20 @@ Requires DeepSeek Harness 0.2.2-rc.3 (desktop profile).
 
 ## Install
 
-This package is `@local/guiding-thought` (`private: true`). It is a local directory bundle, not an npm publish.
+Package name: `@local/guiding-thought`. Not published to npm.
 
-1. In DeepSeek Harness: **Plugins → Add plugin**
-2. Choose this directory
+**Any DeepSeek Harness profile**
+
+1. **Plugins → Add plugin**
+2. Paste `https://github.com/tdsjff0513/guiding-thought`
+3. Restart if the manager asks
+
+After [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin) lists it, search **Guiding thought** / **指导思想** in dshmarket.
+
+**Local directory**
+
+1. **Plugins → Add plugin**
+2. Choose this checkout
 3. Restart if the manager asks
 
 Do not copy files into `$DSH_HOME` or edit the profile `package.json` by hand.
