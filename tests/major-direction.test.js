@@ -26,6 +26,13 @@ const POSITIVE = [
   'What is the decision?',
   'What approach should we choose?',
   'Which option should we pick?',
+  'We ruled out the price formula',
+  'This path is excluded',
+  'root cause is cache desync',
+  'the world is that the server still holds the item',
+  'We have excluded the vendor quest path',
+  'root cause: held slot',
+  'Depending on the logs, we decided to use the fallback path',
 ];
 
 const NEGATIVE = [
@@ -53,6 +60,14 @@ const NEGATIVE = [
   '方案已经包含三个步骤',
   '当前状态是正常',
   '世界是一个时区工具',
+  '判断是对的',
+  '假设是合理的',
+  '解释是这样的',
+  '结论是',
+  '这个方向就是北',
+  '下一步就是打开文件',
+  'exclude this file',
+  'exclude this path',
 ];
 
 test('isMajorDirection returns true for major-direction fixtures', () => {
