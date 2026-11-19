@@ -3,9 +3,9 @@ import { isMajorDirection } from './major-direction.js';
 
 function safeStringify(value) {
   try {
-    return JSON.stringify(value);
+    return { ok: true, value: JSON.stringify(value) };
   } catch {
-    return '';
+    return { ok: false, value: '' };
   }
 }
 
@@ -46,7 +46,14 @@ export function appendThoughtIfNeeded(decision, id) {
 }
 
 export function additionalContextsForToolResult(exec, result, id) {
-  const chunks = [safeStringify(exec?.arguments)];
+  const serializedArguments = safeStringify(exec?.arguments);
+  if (!serializedArguments.ok) {
+    return [];
+  }
+  const chunks = [];
+  if (serializedArguments.value) {
+    chunks.push(serializedArguments.value);
+  }
   const content = result?.content;
   if (Array.isArray(content)) {
     for (const block of content) {

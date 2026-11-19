@@ -16,7 +16,11 @@ const POSITIVE = [
   'compress summary: 排除了超时这一路',
   'The root cause is the cache layer',
   'We decided to use the fallback path',
+  'We chose the fallback path',
   'What is the root cause?',
+  'Which path should we take?',
+  '世界是这样',
+  '现实就是如此',
 ];
 
 const NEGATIVE = [
@@ -33,6 +37,13 @@ const NEGATIVE = [
   '可能是缓存问题，待验证',
   '先收集证据，再决定方案',
   'Could be a cache issue; needs verification',
+  'The root cause is probably the cache',
+  'The root cause is uncertain',
+  '方案说明了读取流程',
+  '路径直接读取日志',
+  '下一步直接读取日志',
+  '世界时间换算工具是什么？',
+  '方案文档是什么？',
 ];
 
 test('isMajorDirection returns true for major-direction fixtures', () => {

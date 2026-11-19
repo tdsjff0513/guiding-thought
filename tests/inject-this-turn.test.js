@@ -115,3 +115,14 @@ test('additionalContextsForToolResult fails closed for BigInt arguments', () => 
     [],
   );
 });
+
+test('serialization failure does not scan result text', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: { count: 1n } },
+      { content: [{ type: 'text', text: '根因是缓存层' }] },
+      't2',
+    ),
+    [],
+  );
+});
