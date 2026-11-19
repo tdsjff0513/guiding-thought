@@ -1,6 +1,8 @@
 # Guiding thought
 
-A DeepSeek Harness Host plugin. When a conclusion is about to freeze into a root cause, exclusion, or world, it puts the guiding thought into **this turn** so later facts can overturn it. Everyday reading, searching, and detail work are left alone.
+A DeepSeek Harness Host plugin. When a task is about to freeze a decision — for example, a root cause, conclusion, chosen path, or exclusion — it puts the guiding thought into **this turn** so later facts can overturn it. It looks for decision questions and combinations of a decision subject with a commitment signal; ordinary reading, searching, and detail work are left alone.
+
+The thought is a method rather than a technical recipe: separate facts, goals, constraints, and unknowns; treat judgments as falsifiable hypotheses; identify the major contradiction; choose verification actions with expected results and stop conditions; and revise the route when practice disagrees.
 
 It does not add prompts, ask the user, deny tools, or register tool guards. There is no configuration; unloading the plugin removes the listeners.
 

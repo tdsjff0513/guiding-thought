@@ -91,3 +91,27 @@ test('additionalContextsForToolResult injects when result text is major-directio
   );
   assert.deepEqual(result, [createThoughtMessage('t2')]);
 });
+
+test('additionalContextsForToolResult fails closed for circular arguments', () => {
+  const argumentsValue = {};
+  argumentsValue.self = argumentsValue;
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: argumentsValue },
+      { content: [] },
+      't2',
+    ),
+    [],
+  );
+});
+
+test('additionalContextsForToolResult fails closed for BigInt arguments', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: { count: 1n } },
+      { content: [] },
+      't2',
+    ),
+    [],
+  );
+});

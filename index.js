@@ -30,10 +30,18 @@ export function apply(ctx) {
         if (extra.length === 0) {
           return decision;
         }
+        const existingContexts = decision.additionalContexts ?? [];
+        if (
+          existingContexts.some(
+            (message) => message?.source?.kind === 'guiding-thought',
+          )
+        ) {
+          return decision;
+        }
         return {
           ...decision,
           additionalContexts: [
-            ...(decision.additionalContexts ?? []),
+            ...existingContexts,
             ...extra,
           ],
         };

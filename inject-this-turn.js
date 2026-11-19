@@ -1,6 +1,14 @@
 import { createThoughtMessage } from './thought.js';
 import { isMajorDirection } from './major-direction.js';
 
+function safeStringify(value) {
+  try {
+    return JSON.stringify(value);
+  } catch {
+    return '';
+  }
+}
+
 export function messageText(message) {
   if (!Array.isArray(message?.content)) {
     return '';
@@ -38,7 +46,7 @@ export function appendThoughtIfNeeded(decision, id) {
 }
 
 export function additionalContextsForToolResult(exec, result, id) {
-  const chunks = [JSON.stringify(exec?.arguments)];
+  const chunks = [safeStringify(exec?.arguments)];
   const content = result?.content;
   if (Array.isArray(content)) {
     for (const block of content) {
