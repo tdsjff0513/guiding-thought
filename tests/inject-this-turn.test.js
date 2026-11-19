@@ -126,3 +126,14 @@ test('serialization failure does not scan result text', () => {
     [],
   );
 });
+
+test('undefined arguments do not scan result text when explicitly present', () => {
+  assert.deepEqual(
+    additionalContextsForToolResult(
+      { arguments: undefined },
+      { content: [{ type: 'text', text: '根因是缓存层' }] },
+      't2',
+    ),
+    [],
+  );
+});

@@ -3,7 +3,10 @@ import { isMajorDirection } from './major-direction.js';
 
 function safeStringify(value) {
   try {
-    return { ok: true, value: JSON.stringify(value) };
+    const serialized = JSON.stringify(value);
+    return serialized === undefined
+      ? { ok: false, value: '' }
+      : { ok: true, value: serialized };
   } catch {
     return { ok: false, value: '' };
   }
@@ -46,13 +49,16 @@ export function appendThoughtIfNeeded(decision, id) {
 }
 
 export function additionalContextsForToolResult(exec, result, id) {
-  const serializedArguments = safeStringify(exec?.arguments);
-  if (!serializedArguments.ok) {
-    return [];
-  }
   const chunks = [];
-  if (serializedArguments.value) {
-    chunks.push(serializedArguments.value);
+  const hasArguments = exec != null && Object.hasOwn(exec, 'arguments');
+  if (hasArguments) {
+    const serializedArguments = safeStringify(exec.arguments);
+    if (!serializedArguments.ok) {
+      return [];
+    }
+    if (serializedArguments.value) {
+      chunks.push(serializedArguments.value);
+    }
   }
   const content = result?.content;
   if (Array.isArray(content)) {

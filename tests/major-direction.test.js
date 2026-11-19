@@ -19,8 +19,13 @@ const POSITIVE = [
   'We chose the fallback path',
   'What is the root cause?',
   'Which path should we take?',
-  '世界是这样',
+  '世界就是这样',
   '现实就是如此',
+  '哪个方案最好？',
+  '应选哪条路径？',
+  'What is the decision?',
+  'What approach should we choose?',
+  'Which option should we pick?',
 ];
 
 const NEGATIVE = [
@@ -44,6 +49,10 @@ const NEGATIVE = [
   '下一步直接读取日志',
   '世界时间换算工具是什么？',
   '方案文档是什么？',
+  '路径已经存在',
+  '方案已经包含三个步骤',
+  '当前状态是正常',
+  '世界是一个时区工具',
 ];
 
 test('isMajorDirection returns true for major-direction fixtures', () => {
